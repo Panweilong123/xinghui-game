@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>蜂巢奇遇</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-app" aria-label="蜂巢奇遇">
+      <header class="hud">
+        <div>
+          <span>分数</span>
+          <strong id="score">0</strong>
+        </div>
+        <div>
+          <span>生命</span>
+          <strong id="lives">3</strong>
+        </div>
+        <div>
+          <span>等级</span>
+          <strong id="level">1</strong>
+        </div>
+        <div>
+          <span>最高</span>
+          <strong id="best">0</strong>
+        </div>
+      </header>
+
+      <section class="stage">
+        <canvas id="game" width="390" height="720" aria-label="游戏画布"></canvas>
+        <div class="finger-tip" id="fingerTip">按住并拖动小蜜蜂</div>
+
+        <div class="overlay" id="overlay">
+          <h1>蜂巢奇遇</h1>
+          <p>按住屏幕拖动男性小蜜蜂，收集发光仙姬，躲开古怪女妖。</p>
+          <button id="startButton" type="button">开始</button>
+        </div>
+      </section>
+
+      <footer class="actions">
+        <button id="pauseButton" type="button">暂停</button>
+        <button id="restartButton" type="button">重开</button>
+        <button id="soundButton" type="button" aria-pressed="true">声音开</button>
+      </footer>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>

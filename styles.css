@@ -1,0 +1,221 @@
+:root {
+  color-scheme: dark;
+  --bg: #5fc6f1;
+  --panel: rgba(255, 248, 223, 0.88);
+  --line: rgba(92, 67, 40, 0.24);
+  --text: #2d3149;
+  --muted: #6d7288;
+  --blue: #39b8ff;
+  --green: #58d49f;
+  --gold: #f0bd55;
+  --ink: #24304f;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  touch-action: none;
+}
+
+body {
+  background: #5fc6f1;
+  color: var(--text);
+  font-family:
+    "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, sans-serif;
+}
+
+button {
+  min-height: 42px;
+  border: 1px solid rgba(81, 62, 42, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 234, 178, 0.9)),
+    #fff3c7;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 3px 0 rgba(98, 72, 44, 0.22);
+}
+
+.game-app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100%;
+  padding:
+    max(8px, env(safe-area-inset-top))
+    max(8px, env(safe-area-inset-right))
+    max(8px, env(safe-area-inset-bottom))
+    max(8px, env(safe-area-inset-left));
+  gap: 7px;
+  background:
+    radial-gradient(circle at 22% 9%, rgba(255, 255, 255, 0.38), transparent 28%),
+    radial-gradient(circle at 88% 78%, rgba(255, 212, 106, 0.24), transparent 30%),
+    linear-gradient(160deg, #79d6ff, #c7f1ff 45%, #78d5ac);
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.hud div {
+  min-width: 0;
+  border: 1px solid rgba(92, 67, 40, 0.18);
+  border-radius: 8px;
+  padding: 6px 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 240, 199, 0.88)),
+    var(--panel);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.84),
+    0 2px 8px rgba(41, 95, 136, 0.16);
+}
+
+.hud span {
+  display: block;
+  color: #69718b;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.hud strong {
+  display: block;
+  margin-top: 2px;
+  overflow: hidden;
+  color: #263050;
+  font-size: clamp(18px, 6vw, 25px);
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  background: var(--bg);
+  box-shadow:
+    0 12px 28px rgba(31, 97, 124, 0.24),
+    inset 0 0 0 1px rgba(77, 65, 49, 0.12);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.finger-tip {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  padding: 7px 10px;
+  border: 1px solid rgba(71, 58, 43, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 248, 223, 0.82);
+  color: #44506c;
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(39, 95, 126, 0.18);
+  transition: opacity 180ms ease;
+}
+
+.finger-tip.hidden {
+  opacity: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 15px;
+  padding: 24px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 27%, rgba(255, 255, 255, 0.52), transparent 28%),
+    rgba(41, 91, 126, 0.38);
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay h1 {
+  margin: 0;
+  color: #fff7d8;
+  font-size: clamp(39px, 13vw, 60px);
+  line-height: 1;
+  text-shadow:
+    0 3px 0 #5164a1,
+    0 8px 18px rgba(26, 70, 112, 0.32);
+}
+
+.overlay p {
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  border: 1px solid rgba(94, 73, 44, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 249, 226, 0.88);
+  color: #4a536f;
+  font-size: 15px;
+  line-height: 1.65;
+  box-shadow: 0 6px 18px rgba(31, 82, 118, 0.18);
+}
+
+.overlay button {
+  width: 136px;
+  margin: 0 auto;
+  border-color: rgba(83, 58, 32, 0.22);
+  background:
+    linear-gradient(180deg, #fff8cc, #f0bd55 55%, #d99332);
+  color: #3b2d20;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+
+@media (max-height: 650px) {
+  .game-app {
+    gap: 5px;
+    padding:
+      max(6px, env(safe-area-inset-top))
+      max(6px, env(safe-area-inset-right))
+      max(6px, env(safe-area-inset-bottom))
+      max(6px, env(safe-area-inset-left));
+  }
+
+  button {
+    min-height: 38px;
+  }
+
+  .hud div {
+    padding: 5px 6px;
+  }
+
+  .finger-tip {
+    display: none;
+  }
+}
